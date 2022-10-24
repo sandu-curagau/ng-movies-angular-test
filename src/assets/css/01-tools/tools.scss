@@ -1,0 +1,5 @@
+/*
+  This contains global functions and mixins and it comes after the settings since the mixins and functions might need access to global settings.
+  This layer is the second layer if you are using preprocessors. Examples are font-size mixins px-to-rem mixins, etc.
+  It is important to avoid writing actual styles in the first two layers.
+*/
