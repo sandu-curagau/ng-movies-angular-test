@@ -22,6 +22,8 @@
     "@ngrx/effects": "^14.3.2",
     "@ngrx/store": "^14.3.2",
     "@ngrx/store-devtools": "^14.3.2",
+    "@ngx-translate/core": "^14.0.0",
+    "@ngx-translate/http-loader": "^7.0.0",
     "eslint": "^8.26.0",
     "ngx-bootstrap": "^9.0.0",
     "primeflex": "^3.2.1",

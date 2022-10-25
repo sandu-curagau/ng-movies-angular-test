@@ -4,3 +4,30 @@
   It is specificity heavy, can override previous styles and is the tip of the triangle.
   Most of the styles here contain the !important flag.
 */
+
+.undraggable-img {
+  -webkit-user-drag: none !important;
+  user-select: none !important;
+  -moz-user-select: none !important;
+  -webkit-user-select: none !important;
+  -ms-user-select: none !important;
+}
+
+.unselectable-text {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.p-focus {
+  box-shadow: none !important;
+}
+
+.p-inputwrapper-focus {
+  box-shadow: none !important;
+}
+
+.p-sidebar .p-sidebar-header .p-sidebar-close:enabled:hover, .p-sidebar .p-sidebar-header .p-sidebar-icon:enabled:hover {
+  background: #6d698c !important;
+}

@@ -1,0 +1,12 @@
+{
+  "navbar": {
+    "title": "NG MOVIES",
+    "homeButton": "INÍCIO",
+    "searchMovieButton": "PESQUISAR",
+    "aboutMeButton": "SOBRE MIM",
+    "menuButton": "MENU"
+  },
+  "home": {
+    "siteDescription": "ENCONTRE AS INFORMAÇÕES DOS SEUS FILMES FAVORITOS"
+  }
+}
