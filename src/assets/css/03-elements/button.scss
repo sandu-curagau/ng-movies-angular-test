@@ -1,0 +1,12 @@
+.white-button-without-filling {
+  color: $colorWhite;
+  background: transparent;
+  border: none;
+}
+.white-button-without-filling:enabled:active,
+.white-button-without-filling:enabled:hover {
+  background-color: #6d698c;
+}
+.white-button-without-filling:focus {
+  box-shadow: none;
+}

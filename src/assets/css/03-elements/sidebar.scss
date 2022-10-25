@@ -1,0 +1,12 @@
+.p-sidebar-right {
+  background-color: #5a577b;
+
+  .p-sidebar-close-icon {
+    color: white;
+  }
+
+  .p-sidebar-content {
+    display: flex;
+    flex-direction: column;
+  }
+}
