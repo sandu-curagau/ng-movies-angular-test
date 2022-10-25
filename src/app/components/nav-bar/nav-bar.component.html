@@ -1,1 +1,68 @@
-<p>nav-bar works!</p>
+<div class="navbar" role="banner" aria-label="banner">
+  <div class="left-section">
+    <img alt="" src="../../../assets/img/movie-reel-cinema-tool.svg" class="undraggable-img">
+    <span class="title unselectable-text">{{'navbar.title' | translate}}</span>
+  </div>
+  <div class="right-section">
+    <div class="buttons-container">
+      <button
+        pButton type="button"
+        class="white-button-without-filling" [style.background-color]="selectedRoute === '/home' ? '#6d698c' : '#5a577b'"
+        [label]="'navbar.homeButton' | translate" icon="pi pi-home"
+        (click)="navigate('home')">
+      </button>
+
+      <button
+        pButton type="button"
+        class="white-button-without-filling" [style.background-color]="selectedRoute === '/search' ? '#6d698c' : '#5a577b'"
+        [label]="'navbar.searchMovieButton' | translate" icon="pi pi-search"
+        (click)="navigate('search')">
+      </button>
+
+      <button
+        pButton type="button"
+        class="white-button-without-filling" [style.background-color]="selectedRoute === '/about-me' ? '#6d698c' : '#5a577b'"
+        [label]="'navbar.aboutMeButton' | translate" icon="pi pi-question"
+        (click)="navigate('about-me')">
+      </button>
+    </div>
+    <div>
+      <p-sidebar [(visible)]="displaySidebar" position="right" appendTo="body" [style]="{width:'15rem'}">
+        <button
+          pButton type="button"
+          class="white-button-without-filling" [style.background-color]="selectedRoute === '/home' ? '#6d698c' : '#5a577b'"
+          [label]="'navbar.homeButton' | translate" icon="pi pi-home"
+          (click)="navigate('home')">
+        </button>
+
+        <button
+          pButton type="button"
+          class="white-button-without-filling" [style.background-color]="selectedRoute === '/search' ? '#6d698c' : '#5a577b'"
+          [label]="'navbar.searchMovieButton' | translate" icon="pi pi-search"
+          (click)="navigate('search')">
+        </button>
+
+        <button
+          pButton type="button"
+          class="white-button-without-filling" [style.background-color]="selectedRoute === '/about-me' ? '#6d698c' : '#5a577b'"
+          [label]="'navbar.aboutMeButton' | translate" icon="pi pi-question"
+          (click)="navigate('about-me')">
+        </button>
+      </p-sidebar>
+      <button
+        id="menu-toggle"
+        pButton type="button"
+        class="white-button-without-filling"
+        [label]="'navbar.menuButton' | translate" icon="pi pi-bars"
+        (click)="displaySidebar = true">
+      </button>
+    </div>
+    <p-dropdown
+      class="dropdown-white-no-filling ml-3"
+      [options]="supportedLanguagesList"
+      [(ngModel)]="selectedLanguage"
+      optionLabel="name"
+      (onChange)="changedLanguage($event)">
+    </p-dropdown>
+  </div>
+</div>

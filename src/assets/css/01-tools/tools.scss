@@ -3,3 +3,22 @@
   This layer is the second layer if you are using preprocessors. Examples are font-size mixins px-to-rem mixins, etc.
   It is important to avoid writing actual styles in the first two layers.
 */
+
+@font-face {
+  font-family: 'Regular Text';
+  src: url("../../fonts/AmaticSC-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bold Text';
+  src: url("../../fonts/Amatic-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+$fontNormal: 'Regular Text';
+$fontBold: 'Bold Text';
+
+$colorWhite: rgb(255, 255, 255);
