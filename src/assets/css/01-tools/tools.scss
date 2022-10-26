@@ -5,20 +5,39 @@
 */
 
 @font-face {
-  font-family: 'Regular Text';
+  font-family: 'Amatic Regular';
   src: url("../../fonts/AmaticSC-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Bold Text';
+  font-family: 'Amatic Bold';
   src: url("../../fonts/Amatic-Bold.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
-$fontNormal: 'Regular Text';
-$fontBold: 'Bold Text';
+@font-face {
+  font-family: 'Montserrat Regular';
+  src: url("../../fonts/Montserrat-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat Bold';
+  src: url("../../fonts/Montserrat-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+$fontAmaticRegular: 'Amatic Regular';
+$fontAmaticBold: 'Amatic Bold';
+$fontMontserratRegular: 'Montserrat Regular';
+$fontMontserratBold: 'Montserrat Bold';
 
 $colorWhite: rgb(255, 255, 255);
+$primaryDark: #5a577b;
+$primaryMedium: #6d698c;
+$primaryLight: #736f94;

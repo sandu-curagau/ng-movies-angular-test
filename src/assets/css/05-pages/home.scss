@@ -1,0 +1,63 @@
+.home-content {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+
+  img {
+    width: 8rem;
+    margin-bottom: 1rem;
+  }
+
+  .description-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+
+    .title {
+      display: flex;
+      justify-content: center;
+      font-family: $fontMontserratBold;
+      color: $colorWhite;
+    }
+  }
+
+  .description-underline {
+    display: flex;
+    align-items: center;
+
+    .star-icon {
+      font-size: 1.25rem;
+      color: $colorWhite;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+    }
+
+    img {
+      margin-bottom: 0;
+      width: 7rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  .home-content {
+    font-size: 2rem;
+
+    .description-underline img {
+      width: 5rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .home-content {
+    font-size: 1.5rem;
+
+    .description-underline img {
+      width: 4rem;
+    }
+  }
+}

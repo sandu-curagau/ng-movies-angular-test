@@ -5,7 +5,7 @@
 }
 .white-button-without-filling:enabled:active,
 .white-button-without-filling:enabled:hover {
-  background-color: #6d698c;
+  background-color: $primaryMedium;
 }
 .white-button-without-filling:focus {
   box-shadow: none;
