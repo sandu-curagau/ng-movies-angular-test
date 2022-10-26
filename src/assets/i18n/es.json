@@ -7,6 +7,7 @@
     "menuButton": "MENU"
   },
   "home": {
-    "siteDescription": "ENCUENTRA LA INFO DE TU PELÍCULA FAVORITA"
+    "siteDescription1": "ENCUENTRA LA INFO DE TU",
+    "siteDescription2": "PELÍCULA FAVORITA"
   }
 }

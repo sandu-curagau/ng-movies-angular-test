@@ -7,6 +7,7 @@
     "menuButton": "MENU"
   },
   "home": {
-    "siteDescription": "FIND THE INFO OF YOUR FAVORITE MOVIE"
+    "siteDescription1": "FIND THE INFO OF YOUR",
+    "siteDescription2": "FAVORITE MOVIE"
   }
 }

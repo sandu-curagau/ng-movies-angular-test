@@ -7,21 +7,21 @@
     <div class="buttons-container">
       <button
         pButton type="button"
-        class="white-button-without-filling" [style.background-color]="selectedRoute === '/home' ? '#6d698c' : '#5a577b'"
+        class="white-button-without-filling" [ngClass]="{'background-primary-medium': selectedRoute === '/home'}"
         [label]="'navbar.homeButton' | translate" icon="pi pi-home"
         (click)="navigate('home')">
       </button>
 
       <button
         pButton type="button"
-        class="white-button-without-filling" [style.background-color]="selectedRoute === '/search' ? '#6d698c' : '#5a577b'"
+        class="white-button-without-filling" [ngClass]="{'background-primary-medium': selectedRoute === '/search'}"
         [label]="'navbar.searchMovieButton' | translate" icon="pi pi-search"
         (click)="navigate('search')">
       </button>
 
       <button
         pButton type="button"
-        class="white-button-without-filling" [style.background-color]="selectedRoute === '/about-me' ? '#6d698c' : '#5a577b'"
+        class="white-button-without-filling" [ngClass]="{'background-primary-medium': selectedRoute === '/about-me'}"
         [label]="'navbar.aboutMeButton' | translate" icon="pi pi-question"
         (click)="navigate('about-me')">
       </button>
@@ -30,21 +30,21 @@
       <p-sidebar [(visible)]="displaySidebar" position="right" appendTo="body" [style]="{width:'15rem'}">
         <button
           pButton type="button"
-          class="white-button-without-filling" [style.background-color]="selectedRoute === '/home' ? '#6d698c' : '#5a577b'"
+          class="white-button-without-filling" [ngClass]="{'background-primary-medium': selectedRoute === '/home'}"
           [label]="'navbar.homeButton' | translate" icon="pi pi-home"
           (click)="navigate('home')">
         </button>
 
         <button
           pButton type="button"
-          class="white-button-without-filling" [style.background-color]="selectedRoute === '/search' ? '#6d698c' : '#5a577b'"
+          class="white-button-without-filling" [ngClass]="{'background-primary-medium': selectedRoute === '/search'}"
           [label]="'navbar.searchMovieButton' | translate" icon="pi pi-search"
           (click)="navigate('search')">
         </button>
 
         <button
           pButton type="button"
-          class="white-button-without-filling" [style.background-color]="selectedRoute === '/about-me' ? '#6d698c' : '#5a577b'"
+          class="white-button-without-filling" [ngClass]="{'background-primary-medium': selectedRoute === '/about-me'}"
           [label]="'navbar.aboutMeButton' | translate" icon="pi pi-question"
           (click)="navigate('about-me')">
         </button>
@@ -58,7 +58,7 @@
       </button>
     </div>
     <p-dropdown
-      class="dropdown-white-no-filling ml-3"
+      class="dropdown-white-no-filling"
       [options]="supportedLanguagesList"
       [(ngModel)]="selectedLanguage"
       optionLabel="name"

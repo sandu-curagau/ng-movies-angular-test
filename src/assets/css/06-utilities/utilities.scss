@@ -29,5 +29,13 @@
 }
 
 .p-sidebar .p-sidebar-header .p-sidebar-close:enabled:hover, .p-sidebar .p-sidebar-header .p-sidebar-icon:enabled:hover {
-  background: #6d698c !important;
+  background: $primaryMedium !important;
+}
+
+.filter-color-white {
+  filter: invert(100%) sepia(0%) saturate(25%) hue-rotate(70deg) brightness(200%) contrast(108%);
+}
+
+.background-primary-medium {
+  background-color: $primaryMedium;
 }

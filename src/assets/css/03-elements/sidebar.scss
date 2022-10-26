@@ -1,5 +1,5 @@
 .p-sidebar-right {
-  background-color: #5a577b;
+  background-color: $primaryDark;
 
   .p-sidebar-close-icon {
     color: white;
@@ -8,5 +8,9 @@
   .p-sidebar-content {
     display: flex;
     flex-direction: column;
+
+    button {
+      margin-bottom: 0.5rem;
+    }
   }
 }
