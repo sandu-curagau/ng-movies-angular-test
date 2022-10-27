@@ -13,8 +13,11 @@ export class ErrorCatchingInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request)
       .pipe(
-        map(res => {
-            return res
+        map((res: any) => {
+          if (res?.body?.Error) {
+            this.errorHandler.showErrorToast(res.body.Error);
+          }
+          return res;
         }),
         catchError((error: HttpErrorResponse) => {
           this.errorHandler.handleError(error);

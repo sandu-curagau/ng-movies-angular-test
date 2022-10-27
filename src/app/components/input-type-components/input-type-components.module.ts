@@ -6,6 +6,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
 
 import { FilterWithOptionsComponent } from './filter-with-options/filter-with-options.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { FilterWithOptionsComponent } from './filter-with-options/filter-with-op
   imports: [
     CommonModule,
     FormsModule,
+    TranslateModule,
     DropdownModule,
     ButtonModule
   ],

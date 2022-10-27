@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterLinkActive } from '@angular/router';
+import { FormsModule } from '@angular/forms'
 
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -14,8 +15,10 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 // These are imported in the app module because they're used in the navbar, which is permanently viewable throughout the whole app at all times
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
-import { FormsModule } from '@angular/forms'
 import { SidebarModule } from 'primeng/sidebar';
+import { RippleModule } from 'primeng/ripple';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -58,11 +61,14 @@ import { interceptorProviders } from './interceptors/interceptors';
     ButtonModule,
     DropdownModule,
     FormsModule,
-    SidebarModule
+    SidebarModule,
+    RippleModule,
+    ToastModule
   ],
   providers: [
     interceptorProviders,
-    RouterLinkActive
+    RouterLinkActive,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

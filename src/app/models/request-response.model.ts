@@ -61,6 +61,7 @@ export enum StatusResponse {
 }
 
 export enum ErrorResponse {
-  TooManyResults = 'Too many results.'
+  TooManyResults = 'Too many results.',
+  MovieNotFound = 'Movie not found!'
 }
 

@@ -52,7 +52,6 @@ export class SearchComponent implements OnInit, OnDestroy {
 
     this.tooManyResults$.pipe(untilDestroyed(this)).subscribe(result => {
       this.tooManyResults = result.value;
-      console.log('Too Many Results');
     });
   }
 

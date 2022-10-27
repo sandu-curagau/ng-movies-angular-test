@@ -1,4 +1,7 @@
 {
+  "components": {
+    "searchFor": "Search for..."
+  },
   "navbar": {
     "title": "NG MOVIES",
     "homeButton": "HOME",

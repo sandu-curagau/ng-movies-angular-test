@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 
 import * as SearchActions from '../actions/search.actions';
-import { ErrorResponse, OmdbApiSearchResponse, Show } from 'src/app/models/request-response.model';
+import { ErrorResponse, Show, StatusResponse } from 'src/app/models/request-response.model';
 
 export const searchFeatureKey = 'search';
 
@@ -37,11 +37,11 @@ export const reducer = createReducer(
 
   on(SearchActions.loadShowsSuccess, (state, action) => ({
     ...state,
-    showList: action.data.Response === 'False' ? [] : action.data.page === 1 ? action.data.Search : [...state.showList, ...action.data.Search],
-    totalResults: action.data.Response === 'False' ? 0 : Number(action.data.totalResults),
+    showList: action.data.Response === StatusResponse.Error ? [] : action.data.page === 1 ? action.data.Search : [...state.showList, ...action.data.Search],
+    totalResults: action.data.Response === StatusResponse.Error ? 0 : Number(action.data.totalResults),
     page: Number(action.data.page),
     loadingShows: false,
-    tooManyResults: action.data.Response === 'False' && action.data?.Error === ErrorResponse.TooManyResults ? {value: true} : {value: false}
+    tooManyResults: action.data.Response === StatusResponse.Error && action.data?.Error === ErrorResponse.TooManyResults ? {value: true} : {value: false}
   })),
 
   on(SearchActions.loadShowsFailure, (state, action) => ({
