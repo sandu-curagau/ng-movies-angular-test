@@ -1,0 +1,8 @@
+.search-page-body {
+  display: flex;
+}
+@media only screen and (max-width: 400px) {
+  .search-page-body {
+    justify-content: center;
+  }
+}

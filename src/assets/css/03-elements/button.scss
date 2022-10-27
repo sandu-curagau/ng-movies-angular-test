@@ -10,3 +10,15 @@
 .white-button-without-filling:focus {
   box-shadow: none;
 }
+
+.icon-only-button-transparent {
+  background-color: transparent;
+  border: none;
+}
+.icon-only-button-transparent:enabled:active,
+.icon-only-button-transparent:enabled:hover {
+  background-color: transparent;
+}
+.icon-only-button-transparent:focus {
+  box-shadow: none;
+}

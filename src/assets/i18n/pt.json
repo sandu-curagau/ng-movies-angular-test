@@ -9,5 +9,12 @@
   "home": {
     "siteDescription1": "ENCONTRA A INFO DO TEU",
     "siteDescription2": "FILME FAVORITO"
+  },
+  "search": {
+    "type": {
+      "movie": "FILME",
+      "series": "SÉRIE",
+      "episode": "EPISÓDIO"
+    }
   }
 }

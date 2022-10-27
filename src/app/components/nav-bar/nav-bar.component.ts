@@ -20,7 +20,7 @@ export class NavBarComponent implements OnInit {
   @Input() set supportedLanguagesInput(list: string[]) {
     if (list.length) {
       list.forEach(language => {
-        this.supportedLanguagesList.push({name: language, value: language});
+        this.supportedLanguagesList.push(transformStringToKeyLabelObject(language));
       });
     }
   }
