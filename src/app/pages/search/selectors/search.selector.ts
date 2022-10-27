@@ -30,6 +30,11 @@ export const getPageNumber = createSelector(
   (searchData: fromSearch.State) => searchData.page
 );
 
+export const getTotalResults = createSelector(
+  selectSearchState,
+  (searchData: fromSearch.State) => searchData.totalResults
+);
+
 export const getTooManyResults = createSelector(
   selectSearchState,
   (searchData: fromSearch.State) => searchData.tooManyResults

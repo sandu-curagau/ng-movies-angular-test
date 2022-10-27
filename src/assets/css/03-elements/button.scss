@@ -22,3 +22,9 @@
 .icon-only-button-transparent:focus {
   box-shadow: none;
 }
+
+.button-icon-color-primary {
+  span {
+    color: $primaryDark;
+  }
+}

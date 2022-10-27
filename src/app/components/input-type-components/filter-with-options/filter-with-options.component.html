@@ -1,5 +1,5 @@
 <div class="filter-with-options">
-  <div class="filter-options-container">
+  <div class="filter-options-container" *ngIf="supportedFilterOptions.length">
     <p-dropdown
       class="dropdown-white-no-filling"
       [options]="supportedFilterOptions"
@@ -7,8 +7,16 @@
       optionLabel="name">
     </p-dropdown>
   </div>
+  <div class="filter-options-container" *ngIf="supportedSecondFilterOptions.length">
+    <p-dropdown
+      class="dropdown-white-no-filling"
+      [options]="supportedSecondFilterOptions"
+      [(ngModel)]="selectedSecondFilterOption"
+      optionLabel="name">
+    </p-dropdown>
+  </div>
   <div class="filter-input-container">
-    <input type="text" class="invisible-input" pInputText [(ngModel)]="filterText" placeholder="Search for..."/>
+    <input type="text" class="invisible-input" pInputText [(ngModel)]="filterText" placeholder="{{'components.searchFor' | translate}}"/>
     <button pButton type="button" icon="pi pi-search" iconPos="left" class="icon-only-button-transparent" (click)="search()"></button>
   </div>
 </div>

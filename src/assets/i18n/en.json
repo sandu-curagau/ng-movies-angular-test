@@ -1,4 +1,7 @@
 {
+  "components": {
+    "searchFor": "Search for..."
+  },
   "navbar": {
     "title": "NG MOVIES",
     "homeButton": "HOME",
@@ -15,6 +18,11 @@
       "movie": "MOVIE",
       "series": "SERIES",
       "episode": "EPISODE"
-    }
+    },
+    "filterYear": {
+      "y": "YEAR"
+    },
+    "tabRecommended": "RECOMMENDED",
+    "tabSearchResult": "SEARCH"
   }
 }

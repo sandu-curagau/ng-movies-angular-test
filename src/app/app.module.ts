@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterLinkActive } from '@angular/router';
+import { FormsModule } from '@angular/forms'
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -11,11 +13,13 @@ import { EffectsModule } from '@ngrx/effects';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-// These are imported in the app module because they're used in the navbar, which is permanently viewable throughout the whole app at all times
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
-import { FormsModule } from '@angular/forms'
 import { SidebarModule } from 'primeng/sidebar';
+import { RippleModule } from 'primeng/ripple';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
 
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -23,12 +27,16 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { interceptorProviders } from './interceptors/interceptors';
+import { InspectShowComponent } from './components/inspect-show/inspect-show.component';
+import { ObjectToArrayOfKeysPipe } from './pipes/object-to-array-of-keys.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    InspectShowComponent,
+    ObjectToArrayOfKeysPipe
   ],
   imports: [
     BrowserModule,
@@ -58,11 +66,18 @@ import { interceptorProviders } from './interceptors/interceptors';
     ButtonModule,
     DropdownModule,
     FormsModule,
-    SidebarModule
+    SidebarModule,
+    RippleModule,
+    ToastModule,
+    DynamicDialogModule
+  ],
+  exports: [
+    InfiniteScrollModule
   ],
   providers: [
     interceptorProviders,
-    RouterLinkActive
+    RouterLinkActive,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

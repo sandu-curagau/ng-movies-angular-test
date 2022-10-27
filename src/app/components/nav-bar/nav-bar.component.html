@@ -18,13 +18,6 @@
         [label]="'navbar.searchMovieButton' | translate" icon="pi pi-search"
         (click)="navigate('search')">
       </button>
-
-      <button
-        pButton type="button"
-        class="white-button-without-filling" [ngClass]="{'background-primary-medium': selectedRoute === '/about-me'}"
-        [label]="'navbar.aboutMeButton' | translate" icon="pi pi-question"
-        (click)="navigate('about-me')">
-      </button>
     </div>
     <div>
       <p-sidebar [(visible)]="displaySidebar" position="right" appendTo="body" [style]="{width:'15rem'}">
@@ -40,13 +33,6 @@
           class="white-button-without-filling" [ngClass]="{'background-primary-medium': selectedRoute === '/search'}"
           [label]="'navbar.searchMovieButton' | translate" icon="pi pi-search"
           (click)="navigate('search')">
-        </button>
-
-        <button
-          pButton type="button"
-          class="white-button-without-filling" [ngClass]="{'background-primary-medium': selectedRoute === '/about-me'}"
-          [label]="'navbar.aboutMeButton' | translate" icon="pi pi-question"
-          (click)="navigate('about-me')">
         </button>
       </p-sidebar>
       <button

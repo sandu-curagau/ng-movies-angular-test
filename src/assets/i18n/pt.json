@@ -1,4 +1,7 @@
 {
+  "components": {
+    "searchFor": "Procurar por..."
+  },
   "navbar": {
     "title": "NG MOVIES",
     "homeButton": "INÍCIO",
@@ -15,6 +18,11 @@
       "movie": "FILME",
       "series": "SÉRIE",
       "episode": "EPISÓDIO"
-    }
+    },
+    "filterYear": {
+      "y": "ANO"
+    },
+    "tabRecommended": "RECOMENDADOS",
+    "tabSearchResult": "PESQUISA"
   }
 }
