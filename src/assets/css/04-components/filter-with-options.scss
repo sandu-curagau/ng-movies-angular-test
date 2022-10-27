@@ -1,0 +1,16 @@
+.filter-with-options {
+  background-color: $primaryDark;
+  display: flex;
+  align-items: center;
+  border-radius: 5px 5px 5px 5px;
+
+  .filter-options-container {
+    border-right: 1px solid $blueLight;
+    padding-right: 0.25rem;
+  }
+
+  .filter-input-container {
+    padding-left: 0.5rem;
+    display: flex;
+  }
+}

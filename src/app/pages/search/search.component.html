@@ -1,1 +1,8 @@
-<p>search works!</p>
+<div class="search-page-body">
+  <div class="filter-container" style="margin: 2rem">
+    <app-filter-with-options
+      [supportedFilterOptions]="supportedFilterOptionsList"
+      (filterEventEmitter)="filterEvent($event)">
+    </app-filter-with-options>
+  </div>
+</div>
