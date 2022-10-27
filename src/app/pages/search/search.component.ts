@@ -11,8 +11,11 @@ import { FilterWithOptionsEventTypes } from 'src/app/enums/event-types.enum';
 import { KeyLabelObject } from 'src/app/models/generic.model';
 import { FilterWithOptionsEvent } from 'src/app/models/output-events.model';
 import { TranslationHelperService } from 'src/app/services/translation-helper.service';
-import { Show } from 'src/app/models/request-response.model';
+import { OmdbApiTitleIdResponse, Show } from 'src/app/models/request-response.model';
 import { transformStringToKeyLabelObject } from 'src/app/utils/key-label.utils';
+import { DialogService } from 'primeng/dynamicdialog';
+import { InspectShowComponent } from 'src/app/components/inspect-show/inspect-show.component';
+import { SearchService } from './search.service';
 
 @UntilDestroy()
 @Component({
@@ -38,7 +41,9 @@ export class SearchComponent implements OnInit, OnDestroy {
   constructor(
     private translate: TranslateService,
     private translationHelper: TranslationHelperService,
-    private store: Store<{}>
+    private store: Store<{}>,
+    public dialogService: DialogService,
+    private searchService: SearchService
     ) {
     translate.onLangChange.pipe(untilDestroyed(this)).subscribe(langChange => {
       this.languageUpdated();
@@ -55,13 +60,18 @@ export class SearchComponent implements OnInit, OnDestroy {
 
     this.supportedFilterOptionsList = this.translationHelper.getTranslatedDropdownOptions('search.type');
     this.initYearsOptions();
-
+    this.initRecommendedShow();
     this.storeSubscriptions();
   }
 
   languageUpdated(): void {
     this.supportedFilterOptionsList = this.translationHelper.getTranslatedDropdownOptions('search.type');
     this.initYearsOptions();
+  }
+
+  loadMoreShows(): void {
+    this.store.dispatch(SearchActions.nextPage());
+    this.store.dispatch(SearchActions.loadShows());
   }
 
   filterEvent(event: FilterWithOptionsEvent): void {
@@ -81,10 +91,20 @@ export class SearchComponent implements OnInit, OnDestroy {
     }
   }
 
+  openShowDetails(show: Show): void {
+    this.searchService.getShowList({id: show.imdbID}).pipe(untilDestroyed(this)).subscribe((showDetails: OmdbApiTitleIdResponse) => {
+      this.dialogService.open(InspectShowComponent, {
+        header: `${showDetails.Title}`,
+        width: showDetails.Poster === 'N/A' ? '30%' : '70%',
+        data: showDetails
+      });
+    });
+  }
+
   storeSubscriptions(): void {
     this.showList$.pipe(untilDestroyed(this)).subscribe(shows => {
+      this.showList = shows;
       if (shows.length) {
-        this.showList = shows;
         this.tabIndex = this.tabIndex !== 1 ? 1 : this.tabIndex;
       }
     });
@@ -117,12 +137,14 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   // BE would send us relevant movies to show, for now we'll have the id list on FE
   initRecommendedShow(): void {
-    this.recommendedShows = [
-      {
-        title: "Arrival",
-        description: "A linguist works with the military to communicate with alien lifeforms after twelve mysterious spacecraft appear around the world."
-      }
-    ];
+    const recommendedShowsIDs = ['tt2543164', 'tt0068646', 'tt0071562', 'tt0468569', 'tt0816692'];
+
+    recommendedShowsIDs.forEach(id => {
+      this.searchService.getShowList({id}).pipe(untilDestroyed(this)).subscribe((showDetails: OmdbApiTitleIdResponse) => {
+        this.recommendedShows.push(showDetails);
+        console.log(this.recommendedShows);
+      });
+    });
   }
 
   ngOnDestroy(): void {

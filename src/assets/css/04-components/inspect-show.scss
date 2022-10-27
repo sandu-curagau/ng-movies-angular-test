@@ -1,0 +1,51 @@
+.p-dialog-header {
+  background-color: $primaryDark;
+}
+
+.p-dialog .p-dialog-header {
+  background-color: $primaryDark;
+  color: white;
+
+  .p-dialog-header-icon {
+    color: white;
+  }
+}
+
+.p-dialog .p-dialog-content {
+  background-color: #d3e9f7;
+  padding: 1rem 1.5rem 1rem 1.5rem;
+}
+
+.inspect-show-content {
+  display: flex;
+  align-items: center;
+
+  .poster-container {
+    margin-right: 1.5rem;
+    box-shadow: 1px 2px 6px 4px;
+    img {
+      width: 15rem;
+    }
+  }
+
+  .show-detail-row {
+    display: flex;
+    margin-bottom: 0.25rem;
+
+    .show-property {
+      padding-top: 0.10rem;
+      font-family: $fontMontserratBold;
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .inspect-show-content {
+    flex-direction: column;
+    .poster-container {
+      margin-bottom: 1rem;
+      margin-right: 0;
+    }
+  }
+}

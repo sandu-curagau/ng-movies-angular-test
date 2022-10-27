@@ -1,13 +1,15 @@
 export interface OmdbApiSearchFilters {
-  filterText?: string | undefined;
-  filterType?: string | undefined;
-  filterYear?: string | undefined;
+  filterText?: string;
+  filterType?: string;
+  filterYear?: string;
   page?: number;
+  id?: string;
 }
 
 export interface OmdbApiSearchFinalParams {
-  s?: string | undefined;
-  type?: string | undefined;
-  y?: string | undefined;
+  s?: string;
+  type?: string;
+  y?: string;
   page?: number;
+  i?: string;
 }

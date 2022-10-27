@@ -8,32 +8,51 @@
   </div>
   <p-tabView [(activeIndex)]="tabIndex">
     <p-tabPanel header="{{'search.tabRecommended' | translate}}">
-      <div class="flex">
-      <p-fieldset legend="Header" *ngFor="let recommendedShow of recommendedShows">
-          Content
-      </p-fieldset>
+      <div class="recommended-content">
+        <p-fieldset [legend]="recommendedShow.Title" *ngFor="let recommendedShow of recommendedShows">
+            <div class="recommended-container">
+              <img alt="poster" [src]="recommendedShow.Poster">
+            </div>
+        </p-fieldset>
       </div>
     </p-tabPanel>
     <p-tabPanel header="{{'search.tabSearchResult' | translate}}" [disabled]="showList.length === 0">
-      <div class="show-list" *ngIf="!loadingSearch">
+      <div class="total-records">Showing {{showList.length}} of {{totalResults}} entries</div>
+      <div class="show-list" *ngIf="!loadingSearch || (showList.length && showList.length > 10)">
         <div *ngFor="let show of showList" class="show-card">
           <div class="img-container">
             <img *ngIf="show.Poster !== 'N/A'" alt="poster" [src]="show.Poster">
             <div *ngIf="show.Poster === 'N/A'"><i class="pi pi-wrench"></i></div>
           </div>
           <div class="show-information-container">
-            <div class="show-title">
-              {{show.Title}}
+            <div class="info-button-container">
+              <button pButton type="button" icon="pi pi-window-maximize" iconPos="left" class="icon-only-button-transparent button-icon-color-primary" (click)="openShowDetails(show)"></button>
             </div>
-            <div class="flex">
-              <div>{{show.Type | uppercase }}</div>
-              <div>({{show.Year}})</div>
+            <div>
+              <div class="show-title">
+                {{show.Title}}
+              </div>
+              <div class="flex">
+                <div>{{show.Type | uppercase }}</div>
+                <div>({{show.Year}})</div>
+              </div>
             </div>
+            <div class="spacing-container"></div>
           </div>
         </div>
       </div>
 
-      <div *ngIf="loadingSearch">LOADING WOO WOOO</div>
+      <div
+        id="search-infinite-scroll"
+        infiniteScroll
+        [infiniteScrollDistance]="0"
+        [infiniteScrollThrottle]="0"
+        (scrolled)="loadMoreShows();"
+        *ngIf="totalResults > showList.length">
+      </div>
+      <div class="spinner-container" *ngIf="loadingSearch">
+        <p-progressSpinner [style]="{width: '50px', height: '50px'}" styleClass="custom-spinner" strokeWidth="4" fill="var(--surface-ground)" animationDuration=".5s"></p-progressSpinner>
+      </div>
     </p-tabPanel>
   </p-tabView>
 

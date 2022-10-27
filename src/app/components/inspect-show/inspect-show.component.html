@@ -1,0 +1,14 @@
+<div class="inspect-show-content">
+  <div class="poster-container" *ngIf="showDetails.Poster !== 'N/A'">
+    <img alt="" [src]="showDetails.Poster">
+  </div>
+  <div>
+    <div *ngFor="let property of showDetails | appProperties" >
+      <div class="show-detail-row"
+        *ngIf="property !== 'Poster' && property !== 'Ratings' && property !== 'Response' && property !== 'imdbID' && property !== 'Type'">
+        <div class="show-property">{{property}}:</div>
+        <div class="property-detail">{{showDetails[property]}}</div>
+      </div>
+    </div>
+  </div>
+</div>

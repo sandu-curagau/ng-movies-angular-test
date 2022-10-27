@@ -30,3 +30,9 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #257FA4;
 }
+
+.spinner-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
