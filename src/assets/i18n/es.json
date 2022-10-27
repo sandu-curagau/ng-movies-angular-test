@@ -1,4 +1,7 @@
 {
+  "components": {
+    "searchFor": "Buscar..."
+  },
   "navbar": {
     "title": "NG MOVIES",
     "homeButton": "INICIO",
@@ -7,6 +10,19 @@
     "menuButton": "MENU"
   },
   "home": {
-    "siteDescription": "ENCUENTRA LA INFO DE TU PELÍCULA FAVORITA"
+    "siteDescription1": "ENCUENTRA LA INFO DE TU",
+    "siteDescription2": "PELÍCULA FAVORITA"
+  },
+  "search": {
+    "type": {
+      "movie": "PELÍCULA",
+      "series": "SERIE",
+      "episode": "EPISODIO"
+    },
+    "filterYear": {
+      "y": "AÑO"
+    },
+    "tabRecommended": "RECOMENDADO",
+    "tabSearchResult": "BÚSQUEDA"
   }
 }

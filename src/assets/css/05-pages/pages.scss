@@ -3,3 +3,7 @@
   It’s more explicit than the previous layers because we are now styling visible UI elements.
   This is the layer where you import your styling for each page component if you don’t include them directly in your component.
 */
+
+@import "home.scss";
+@import "search.scss";
+@import "page-not-found.scss";

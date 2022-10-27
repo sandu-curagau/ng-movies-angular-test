@@ -20,7 +20,7 @@ export class NavBarComponent implements OnInit {
   @Input() set supportedLanguagesInput(list: string[]) {
     if (list.length) {
       list.forEach(language => {
-        this.supportedLanguagesList.push({name: language, value: language});
+        this.supportedLanguagesList.push(transformStringToKeyLabelObject(language));
       });
     }
   }
@@ -37,7 +37,9 @@ export class NavBarComponent implements OnInit {
 
   constructor(private router: Router) {
     this.router.events.pipe(untilDestroyed(this)).subscribe((event: any) => {
-      if (event instanceof NavigationEnd) {
+      if (event.url === '/') {
+        this.selectedRoute = '/home';
+      } else if (event instanceof NavigationEnd) {
         this.selectedRoute = event.url;
       }
     });
