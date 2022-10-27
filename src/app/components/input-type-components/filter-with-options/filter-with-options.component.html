@@ -1,9 +1,17 @@
 <div class="filter-with-options">
-  <div class="filter-options-container">
+  <div class="filter-options-container" *ngIf="supportedFilterOptions.length">
     <p-dropdown
       class="dropdown-white-no-filling"
       [options]="supportedFilterOptions"
       [(ngModel)]="selectedFilterOption"
+      optionLabel="name">
+    </p-dropdown>
+  </div>
+  <div class="filter-options-container" *ngIf="supportedSecondFilterOptions.length">
+    <p-dropdown
+      class="dropdown-white-no-filling"
+      [options]="supportedSecondFilterOptions"
+      [(ngModel)]="selectedSecondFilterOption"
       optionLabel="name">
     </p-dropdown>
   </div>

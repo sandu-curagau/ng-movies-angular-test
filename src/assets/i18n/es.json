@@ -18,6 +18,11 @@
       "movie": "PELÍCULA",
       "series": "SERIE",
       "episode": "EPISODIO"
-    }
+    },
+    "filterYear": {
+      "y": "AÑO"
+    },
+    "tabRecommended": "RECOMENDADO",
+    "tabSearchResult": "BÚSQUEDA"
   }
 }

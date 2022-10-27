@@ -1,17 +1,18 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 
 import { select, Store } from '@ngrx/store';
 import * as SearchActions from './actions/search.actions';
-import { getShows, getTooManyResults } from './selectors/search.selector';
+import { getLoadingSearch, getShows, getTooManyResults, getTotalResults } from './selectors/search.selector';
 
 import { FilterWithOptionsEventTypes } from 'src/app/enums/event-types.enum';
 import { KeyLabelObject } from 'src/app/models/generic.model';
 import { FilterWithOptionsEvent } from 'src/app/models/output-events.model';
 import { TranslationHelperService } from 'src/app/services/translation-helper.service';
 import { Show } from 'src/app/models/request-response.model';
+import { transformStringToKeyLabelObject } from 'src/app/utils/key-label.utils';
 
 @UntilDestroy()
 @Component({
@@ -22,10 +23,17 @@ import { Show } from 'src/app/models/request-response.model';
 export class SearchComponent implements OnInit, OnDestroy {
 
   showList$: Observable<Show[]>;
-  showList: Show[];
+  showList: Show[] = [];
+  totalResults$: Observable<any>;
+  totalResults: any;
   tooManyResults$: Observable<{value: boolean}>;
   tooManyResults: boolean = false;
+  loadingSearch$: Observable<{value: boolean}>;
+  loadingSearch: boolean = false;
   supportedFilterOptionsList: KeyLabelObject[] = [];
+  supportedSecondFilterOptionsList: KeyLabelObject[] = [];
+  tabIndex = 0;
+  recommendedShows: any = [];
 
   constructor(
     private translate: TranslateService,
@@ -38,33 +46,32 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.supportedFilterOptionsList = [];
-    this.supportedFilterOptionsList = this.translationHelper.getTranslatedDropdownOptions('search.type');
-
     this.showList$ = this.store.pipe(select(getShows));
+    this.totalResults$ = this.store.pipe(select(getTotalResults));
     this.tooManyResults$ = this.store.pipe(select(getTooManyResults));
+    this.loadingSearch$ = this.store.pipe(select(getLoadingSearch));
+
     this.store.dispatch(SearchActions.setFiltered({page: 1}));
 
-    this.showList$.pipe(untilDestroyed(this)).subscribe(shows => {
-      this.showList = shows;
-      console.log(this.showList);
-    });
+    this.supportedFilterOptionsList = this.translationHelper.getTranslatedDropdownOptions('search.type');
+    this.initYearsOptions();
 
-    this.tooManyResults$.pipe(untilDestroyed(this)).subscribe(result => {
-      this.tooManyResults = result.value;
-    });
+    this.storeSubscriptions();
   }
 
   languageUpdated(): void {
     this.supportedFilterOptionsList = this.translationHelper.getTranslatedDropdownOptions('search.type');
+    this.initYearsOptions();
   }
 
   filterEvent(event: FilterWithOptionsEvent): void {
     switch(event.eventType) {
       case FilterWithOptionsEventTypes.Search:
+        this.store.dispatch(SearchActions.clearShows());
         this.store.dispatch(SearchActions.setFiltered({
           filterText: event.data.text,
           filterType: event.data.option.value,
+          filterYear: event.data.secondOption.value,
           page: 1
         }));
         this.store.dispatch(SearchActions.loadShows());
@@ -72,6 +79,50 @@ export class SearchComponent implements OnInit, OnDestroy {
       default:
         break;
     }
+  }
+
+  storeSubscriptions(): void {
+    this.showList$.pipe(untilDestroyed(this)).subscribe(shows => {
+      if (shows.length) {
+        this.showList = shows;
+        this.tabIndex = this.tabIndex !== 1 ? 1 : this.tabIndex;
+      }
+    });
+
+    this.totalResults$.pipe(untilDestroyed(this)).subscribe((result: number) => {
+      this.totalResults = result;
+
+      if (this.showList.length < 20 && this.totalResults > 10) {
+        this.store.dispatch(SearchActions.nextPage());
+        this.store.dispatch(SearchActions.loadShows());
+      }
+    });
+
+    this.tooManyResults$.pipe(untilDestroyed(this)).subscribe(result => {
+      this.tooManyResults = result.value;
+    });
+
+    this.loadingSearch$.pipe(untilDestroyed(this)).subscribe(result => {
+      this.loadingSearch = result.value;
+    });
+  }
+
+  initYearsOptions(): void {
+    this.supportedSecondFilterOptionsList = [];
+    this.supportedSecondFilterOptionsList.push(this.translationHelper.getTranslatedDropdownOptions('search.filterYear')[0]);
+    for (var i = new Date().getFullYear(); i >= 1920; i--) {
+      this.supportedSecondFilterOptionsList.push(transformStringToKeyLabelObject(String(i)));
+    }
+  }
+
+  // BE would send us relevant movies to show, for now we'll have the id list on FE
+  initRecommendedShow(): void {
+    this.recommendedShows = [
+      {
+        title: "Arrival",
+        description: "A linguist works with the military to communicate with alien lifeforms after twelve mysterious spacecraft appear around the world."
+      }
+    ];
   }
 
   ngOnDestroy(): void {

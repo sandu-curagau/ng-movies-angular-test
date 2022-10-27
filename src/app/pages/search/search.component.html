@@ -1,8 +1,40 @@
 <div class="search-page-body">
-  <div class="filter-container" style="margin: 2rem">
+  <div class="filter-container">
     <app-filter-with-options
       [supportedFilterOptions]="supportedFilterOptionsList"
+      [supportedSecondFilterOptions]="supportedSecondFilterOptionsList"
       (filterEventEmitter)="filterEvent($event)">
     </app-filter-with-options>
   </div>
+  <p-tabView [(activeIndex)]="tabIndex">
+    <p-tabPanel header="{{'search.tabRecommended' | translate}}">
+      <div class="flex">
+      <p-fieldset legend="Header" *ngFor="let recommendedShow of recommendedShows">
+          Content
+      </p-fieldset>
+      </div>
+    </p-tabPanel>
+    <p-tabPanel header="{{'search.tabSearchResult' | translate}}" [disabled]="showList.length === 0">
+      <div class="show-list" *ngIf="!loadingSearch">
+        <div *ngFor="let show of showList" class="show-card">
+          <div class="img-container">
+            <img *ngIf="show.Poster !== 'N/A'" alt="poster" [src]="show.Poster">
+            <div *ngIf="show.Poster === 'N/A'"><i class="pi pi-wrench"></i></div>
+          </div>
+          <div class="show-information-container">
+            <div class="show-title">
+              {{show.Title}}
+            </div>
+            <div class="flex">
+              <div>{{show.Type | uppercase }}</div>
+              <div>({{show.Year}})</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="loadingSearch">LOADING WOO WOOO</div>
+    </p-tabPanel>
+  </p-tabView>
+
 </div>

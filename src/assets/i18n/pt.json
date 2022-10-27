@@ -18,6 +18,11 @@
       "movie": "FILME",
       "series": "SÉRIE",
       "episode": "EPISÓDIO"
-    }
+    },
+    "filterYear": {
+      "y": "ANO"
+    },
+    "tabRecommended": "RECOMENDADOS",
+    "tabSearchResult": "PESQUISA"
   }
 }

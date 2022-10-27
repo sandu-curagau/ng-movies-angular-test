@@ -1,0 +1,37 @@
+p-tabview .p-tabview {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .p-tabview-nav-container .p-tabview-nav-content .p-tabview-nav {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+
+    li .p-tabview-nav-link {
+      display: flex;
+      justify-content: center;
+      width: 10rem;
+    }
+
+    li.p-highlight .p-tabview-nav-link {
+      background: #5a577b;
+      border-color: #6b6981;
+      color: white;
+      width: 10rem;
+    }
+
+    li.p-disabled .p-tabview-nav-link {
+      width: 10rem;
+      display: flex;
+      justify-content: center;
+    }
+  }
+  .p-tabview-panels {
+    background-color: transparent;
+  }
+}
+
+.p-tabview .p-tabview-nav li .p-tabview-nav-link:not(.p-disabled):focus {
+  box-shadow: none;
+}
