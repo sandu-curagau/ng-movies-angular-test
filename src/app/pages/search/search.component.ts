@@ -142,13 +142,17 @@ export class SearchComponent implements OnInit, OnDestroy {
     recommendedShowsIDs.forEach(id => {
       this.searchService.getShowList({id}).pipe(untilDestroyed(this)).subscribe((showDetails: OmdbApiTitleIdResponse) => {
         this.recommendedShows.push(showDetails);
-        console.log(this.recommendedShows);
       });
     });
   }
 
   ngOnDestroy(): void {
-    this.store.dispatch(SearchActions.setFiltered({page: 1, filterText: 'a'}));
+    this.store.dispatch(SearchActions.setFiltered({
+      page: 1,
+      filterText: undefined,
+      filterType: undefined,
+      filterYear: undefined
+    }));
     this.store.dispatch(SearchActions.clearShows());
   }
 
