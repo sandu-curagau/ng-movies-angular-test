@@ -16,7 +16,7 @@
     </p-dropdown>
   </div>
   <div class="filter-input-container">
-    <input type="text" class="invisible-input" pInputText [(ngModel)]="filterText" placeholder="{{'components.searchFor' | translate}}"/>
+    <input type="text" class="invisible-input" pInputText [(ngModel)]="filterText" placeholder="{{'components.searchFor' | translate}}" (keyup.enter)="search()"/>
     <button pButton type="button" icon="pi pi-search" iconPos="left" class="icon-only-button-transparent" (click)="search()"></button>
   </div>
 </div>
